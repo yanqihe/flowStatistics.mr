@@ -1,0 +1,11 @@
+// 创建输出目录
+hdfs dfs -mkdir -p /user/student/heyanqi/flowstat/input
+
+// 上传流程日志文件
+hdfs dfs -put flow.log /user/student/heyanqi/flowstat/input
+
+// 执行mapreduce任务
+hadoop jar flowStatistics.mr-0.0.1-SNAPSHOT.jar com.heyq.hadoop.flowStatistics.mr.FlowMapReduce /user/student/heyanqi/flowstat/input /user/student/heyanqi/flowstat/output
+
+// 查看输出结果
+hdfs dfs -cat /user/student/heyanqi/flowstat/output/part-r-00000
